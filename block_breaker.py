@@ -15,6 +15,8 @@ def renderView():
     display.set_pixel(shipPos[0], shipPos[1], 9)
     # draw blocks
     for idx, val in enumerate(blocks):
+        if val < 0:
+            val = 0
         display.set_pixel(idx, 0, val)
     # draw shots
     if len(shots) > 0:
@@ -28,7 +30,7 @@ def moveElements():
             if shots[idx][1] >= 1:
                 shots[idx][1] = shots[idx][1] - 1
             else:
-                blocks[shots[idx][0]] = 0
+                blocks[shots[idx][0]] = blocks[shots[idx][0]] - 3
                 del shots[idx]
                
 
